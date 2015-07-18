@@ -1,0 +1,75 @@
+{:=title_suffix} index page
+<html>
+{include:header}
+<body>
+
+{--h1}{:title} {:title_suffix}
+
+
+
+<p>
+    {--h2} Ruby placeholders
+
+    First of all, you can use simple Ruby placeholders with this format:
+    {--pre} ##{#Time.now#} <br>
+    It will be extrapolated to:
+    {--pre} {#Time.now#} <br>
+
+    To comment something just put #### before the string:
+    {--pre} ####{#Time.now#} <br>
+</p>
+
+
+
+<p>
+    {--h2} Local variables
+
+    Then you can create your own local variables:
+    {--pre} ##{:=variable_name} data
+    and then use it somewhere like:
+    {--pre} ##{:variable_name}
+
+    Note that nonexistent variables won't be displayed.
+</p>
+
+
+<p>
+    {--h2} Include partials
+
+    You can include partials with:
+    ##{include:partial_name} <br>
+    It will search for partial in /app/templates/partials/.
+    Every partial should be prefixed with _.
+</p>
+
+
+
+
+<p>
+    {--h2} Cycles
+
+    Also you can create cycles:
+    {--pre} ##{---for:i:1;10} ##{-i} ##{---/for:i}
+    and it will create something like this:
+    {--pre} {---for:i:1;10} {-i} {---/for:i}
+</p>
+
+
+<p>
+    {--h2} Example of a cycle within table:
+
+<table border='1'>
+{---for:jjj:1;10}
+    <tr>
+        <td>
+        hello
+            {-jjj} hi
+        bye
+        </td>
+    </tr>
+{---/for:jjj}
+</table>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+{:=title} Templater
+<head>
+    {--title} {:title} {:title_suffix}
+</head>
